@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .verification-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px; /* Fixed width for better centering */
+        }
+        .verification-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .verification-container input[type="text"] {
+            width: calc(100% - 20px); /* Adjust width to account for padding */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .verification-container button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* Make button full width */
+        }
+        .verification-container button:hover {
+            background-color: #218838;
+        }
+        .verification-result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="verification-container">
+    <h1>Verification Portal</h1>
+    <form id="verificationForm">
+        <input type="text" id="verificationCode" placeholder="Enter your verification code" required>
+        <button type="submit">Verify</button>
+    </form>
+    <div id="verificationResult" class="verification-result"></div>
+</div>
+
+<script>
+    document.getElementById('verificationForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Updated valid verification code
+        const validCode = "12345AB";
+
+        // Get the user's input
+        const userCode = document.getElementById('verificationCode').value;
+
+        // Check if the code is valid
+        const resultDiv = document.getElementById('verificationResult');
+        if (userCode === validCode) {
+            resultDiv.textContent = "Verification Successful! You are verified.";
+            resultDiv.style.color = "#28a745";
+        } else {
+            resultDiv.textContent = "Verification Failed. Please check your code and try again.";
+            resultDiv.style.color = "#dc3545";
+        }
+    });
+</script>
+
+</body>
+</html>
